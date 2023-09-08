@@ -1,0 +1,12 @@
+variable "database_name" {}
+variable "db_password" {}
+variable "db_username" {}
+variable "private_ip_address" {}
+variable "network" {}
+variable "project_id" {}
+variable "service_account" {}
+variable "vm_machine_type" {}
+variable "vm_zone" {}
+variable "vm_instance_name" {}
+variable "instance_name" {}
+variable "cluster_name" {}

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<head>
+    <link rel="icon" href="static/img/gcp-logo-cloud.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI for AlloyDB</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ url_for('static', filename='img/palm.jpg') }}");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            height: 100vh;
+        }
+
+        .search-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .search-box {
+            padding: 10px;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 400px;
+        }
+
+        .search-btn {
+            padding: 8px 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for the search response container */
+        #searchResponseContainer {
+            margin-top: 60px;
+            padding: 35px;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.627);
+            text-align: left;
+        }
+
+        .navbar {
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 5px 50px;
+            text-decoration: underline;
+            font-size: x-large;
+            font-weight: 500;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar .logo {
+            float: left;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 5px;
+        }
+
+        .navbar .logo .logo-title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="logo">
+            <img src="static/img/gcp.jpg" alt="Logo">
+            <span class="logo-title">GenAI for AlloyDB</span>
+        </a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('index') }}">Demo</a>
+    </div>
+</body>
+
+</html>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GenAI for AlloyDB</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-image: url("{{ url_for('static', filename='img/palm.jpg') }}");
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            color: rgb(0, 0, 0);
+            text-align: center;
+            height: 100vh;
+        }
+
+        .search-container {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .search-box {
+            padding: 10px;
+            border: 2px solid rgb(0, 0, 0);
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            width: 400px;
+        }
+
+        .search-btn {
+            padding: 8px 16px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .search-btn:hover {
+            background-color: #0056b3;
+        }
+
+        /* Styling for the search response container */
+        #searchResponseContainer {
+            margin-top: 60px;
+            padding: 35px;
+            border: 2px solid #ffffff;
+            border-radius: 20px;
+            background-color: rgba(255, 255, 255, 0.627);
+            text-align: left;
+        }
+
+        .navbar {
+            background-color: rgb(0, 0, 0);
+            overflow: hidden;
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .navbar a {
+            float: right;
+            display: block;
+            color: white;
+            text-align: center;
+            padding: 5px 50px;
+            text-decoration: underline;
+            font-size: x-large;
+            font-weight: 500;
+        }
+
+        .navbar a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+
+        .navbar .logo {
+            float: left;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            height: 40px;
+            width: 40px;
+            margin-right: 5px;
+        }
+
+        .navbar .logo .logo-title {
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .app-container_1 {
+            margin-top: 50px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 52px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            width: 80%;
+            text-align: left;
+            font-size: larger;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+        .app-container_2 {
+            padding: 52px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            width: 80%;
+            margin-top: 50px;
+            margin-bottom: auto;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            font-size: larger;
+            font-weight: bold;
+            color: rgb(0, 0, 0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <a href="{{ url_for('index') }}" class="logo">
+            <img src="static/img/gcp.jpg" alt="Logo">
+            <span class="logo-title">GenAI for AlloyDB</span>
+        </a>
+        <a href="{{ url_for('about') }}">About</a>
+        <a href="{{ url_for('index') }}">Demo</a>
+    </div>
+
+    <!-- About the demo -->
+    <div class="app-container_1">
+        <h1 style="color: rgb(0, 132, 255);">About this Demo:</h1>
+        <!-- Add your app contents here -->
+        <p>This website is the front-end application for <a href="https://cloud-demo-hub.corp.google.com/404">“GenAI for AlloyDB”</a> demo available on <a href="https://cloud-demo-hub.corp.google.com">go/demos</a>. The demo also includes access to backend resources such as AlloyDB, Notebook instance & source code for Web App on Google Console via the Click-to-Deploy feature/button on the demo page (Note: Available to <a href="https://g3doc.corp.google.com/company/teams/argolis/what-is-argolis.md?cl=head">Argolis</a> users only). Please follow the Demo Guide for the <a href="https://cloud-demo-hub.corp.google.com/404">“GenAI for AlloyDB”</a> Demo for steps on how to showcase this demo to your customer.</p>
+    </div>
+    <div class="app-container_2">
+        <h1 style="color: rgb(0, 132, 255);">Search Questions:</h1>
+        <h3>You can follow below Questions to Search on Demo section of this App & you will get to experience the answers with generative AI features using pgvector, LangChain and LLMs on Google Cloud.</h3>
+        <!-- Add information about the app here -->
+        <ol>
+            <li>Do you have a beach toy set that teaches numbers and letters to kids?</li>
+            <li>Show me the best game to resolve disputes and hard decisions</li>
+            <li>Show me a good tricycle with canopy basket for kids</li>
+            <li>Show me a bounce house with castle design</li>
+        </ol>
+    </div>
+</body>
+</html>
